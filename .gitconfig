@@ -1,0 +1,65 @@
+[user]
+	name = Kenny Elshoff
+	email = kelshoff@grahamdigital.com
+	signingKey = 30EAC6803F5E5F0F18C9573C4BD3AA6286412A8B
+[push]
+	default = simple
+[branch]
+	autosetuprebase = always
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	pager = true
+[color "branch"]
+	current = magenta
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = magenta
+[core]
+	excludesfile = /Users/kennethelshoff/.gitignore_global
+	editor = nano
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	rb = rebase
+	ci = commit
+	up = push --set-upstream origin
+	dad = !curl https://icanhazdadjoke.com/
+	ff = merge --ff-only --no-commit
+	origdel = push origin --delete
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	oneline = log --oneline
+	updateremote = remote update origin --prune
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[commit]
+	template = /Users/kennethelshoff/.stCommitMsg
+	gpgsign = true
+[pull]
+	rebase = true
+[gpg]
+	program = gpg
+[tag]
+	forceSignAnnotated = true
