@@ -1,2 +1,6 @@
 *~
 .DS_Store
+
+# Machine-local secrets / overrides (sourced by .zshrc and .gitconfig)
+.zshenv.local
+.gitconfig.local
