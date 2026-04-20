@@ -173,7 +173,6 @@
   "gitlens.ai.gitkraken.model": "gemini:gemini-2.0-flash",
   "cursor.composer.usageSummaryDisplay": "always",
   "cursor.composer.shouldAllowCustomModes": true,
-  "workbench.preferredDarkColorTheme": "One Hunter Theme Material",
   "window.commandCenter": true,
   "workbench.navigationControl.enabled": false,
   "claudeCode.preferredLocation": "panel",
@@ -184,5 +183,6 @@
   "git.blame.statusBarItem.enabled": true,
   "git.blame.editorDecoration.enabled": true,
   "workbench.layoutControl.enabled": false,
-  "atlascode.rovodev.showEntitlementNotifications": false
+  "atlascode.rovodev.showEntitlementNotifications": false,
+  "workbench.preferredDarkColorTheme": "One Hunter Theme Material"
 }
