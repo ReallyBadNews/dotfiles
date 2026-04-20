@@ -40,11 +40,17 @@ Existing non-symlink files in `$HOME` are backed up with a timestamp suffix.
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Core tools
-brew install starship fnm tmux git-delta gh 1password-cli \
-  zsh-autosuggestions zsh-syntax-highlighting
+brew install starship fnm tmux git-delta gh 1password-cli
 
 # Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# install.sh will clone these into $ZSH_CUSTOM/plugins on the next run,
+# but you can do it manually too:
+#   git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions \
+#     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+#   git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting \
+#     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # Font for Ghostty
 brew install --cask font-fira-code-nerd-font

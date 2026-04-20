@@ -63,6 +63,28 @@ for entry in "${CONFIG_ENTRIES[@]}"; do
   link "$DOTFILES_DIR/.config/$entry" "$target"
 done
 
+echo "== Oh My Zsh custom plugins =="
+ZSH_CUSTOM_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+declare -a OMZ_PLUGINS=(
+  "zsh-autosuggestions|https://github.com/zsh-users/zsh-autosuggestions"
+  "zsh-syntax-highlighting|https://github.com/zsh-users/zsh-syntax-highlighting"
+)
+if [[ -d "$HOME/.oh-my-zsh" ]]; then
+  mkdir -p "$ZSH_CUSTOM_DIR/plugins"
+  for entry in "${OMZ_PLUGINS[@]}"; do
+    name="${entry%%|*}"; url="${entry##*|}"
+    dest="$ZSH_CUSTOM_DIR/plugins/$name"
+    if [[ -d "$dest" ]]; then
+      echo "  exists: $dest"
+    else
+      echo "  clone:  $url -> $dest"
+      (( DRY_RUN )) || git clone --depth=1 "$url" "$dest"
+    fi
+  done
+else
+  echo "  ~/.oh-my-zsh not found; install Oh My Zsh first, then re-run"
+fi
+
 echo "== Cursor =="
 mkdir -p "$CURSOR_USER_DIR" "$HOME/.cursor"
 link "$DOTFILES_DIR/cursor/settings.json"    "$CURSOR_USER_DIR/settings.json"
