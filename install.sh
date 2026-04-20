@@ -8,7 +8,6 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DRY_RUN=0
 [[ "${1:-}" == "--dry-run" ]] && DRY_RUN=1
 
-# Top-level dotfiles to link into $HOME
 FILES=(
   .zshrc
   .zprofile
@@ -18,7 +17,6 @@ FILES=(
   .actrc
 )
 
-# ~/.config subpaths to link (relative to repo's .config/)
 CONFIG_ENTRIES=(
   starship.toml
   ghostty/config
@@ -59,10 +57,18 @@ done
 cat <<'EOF'
 
 Done. Next steps on a fresh machine:
-  1. Install Homebrew:      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  2. Core tools:            brew install starship bat nvm pyenv zsh-autosuggestions zsh-syntax-highlighting tmux git-delta gh
-  3. Oh My Zsh:             sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  4. Create ~/.zshenv.local with secrets (CLOUDFLARE_API_TOKEN, GITHUB_PAT, etc.)
-  5. (Optional) Create ~/.gitconfig.local with machine-specific git settings.
+  1. Install Homebrew:
+       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  2. Core tools:
+       brew install starship fnm tmux git-delta gh 1password-cli \
+         zsh-autosuggestions zsh-syntax-highlighting
+  3. Oh My Zsh:
+       sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  4. 1Password service account token (enables secret auto-loading):
+       mkdir -p ~/.config/op
+       chmod 700 ~/.config/op
+       # Paste the token, then:
+       chmod 600 ~/.config/op/.service-account-token
+  5. (Optional) ~/.zshenv.local for anything not in 1Password.
   6. Restart the shell.
 EOF
