@@ -65,7 +65,7 @@
 	format = ssh
 
 [gpg "ssh"]
-	allowedSignersFile = ~/.ssh/allowed_ssh_signers
+	allowedSignersFile = ~/.ssh/allowed_signers
 
 [commit]
 	gpgsign = true
