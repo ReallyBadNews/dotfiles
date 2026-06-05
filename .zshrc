@@ -123,3 +123,11 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/kenny/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+# GitHub MCP server (Claude Code github plugin) — reuse the gh CLI token so no PAT is stored on disk
+export GITHUB_PERSONAL_ACCESS_TOKEN="$(gh auth token)"
